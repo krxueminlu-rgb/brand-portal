@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef } from "react";
 
 const C = {
   blue50:"#E6F1FB",blue100:"#B5D4F4",blue200:"#85B7EB",
@@ -137,7 +137,6 @@ export default function App(){
   const [newAssetOpen,setNewAssetOpen]=useState(false);
   const [newComment,setNewComment]=useState("");
   const [ssPreview,setSsPreview]=useState(null);
-  const [dragOver,setDragOver]=useState({});
   const [ncForm,setNcForm]=useState({title:"",module:"Marketplace",priority:"Medium",platform:"",country:"",infringer:"",description:""});
   const [naForm,setNaForm]=useState({name:"",type:"Trademark",size:""});
   const [assetTypeFilter,setAssetTypeFilter]=useState("All");
