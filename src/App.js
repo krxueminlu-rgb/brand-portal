@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, ShoppingCart, Instagram, Globe, Search, FileText, ChevronDown, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, Settings2, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Info, AlertCircle, Download, Trash2, Send, ChevronUp, Sparkles } from "lucide-react";
+import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, FileText, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, Settings2, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Download, Trash2, Send, Sparkles, ChevronDown } from "lucide-react";
+SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Info, AlertCircle, Download, Trash2, Send, ChevronUp, Sparkles } from "lucide-react";
 
 const T = {
   navy:"#0A1628", navyLight:"#0F2040", navyMid:"#162B55",
