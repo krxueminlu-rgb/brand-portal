@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, FileText, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, Settings2, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Download, Trash2, Send, Sparkles, ChevronDown, Search, Globe, ShoppingCart, Megaphone, Tag, Filter, MoreHorizontal, ChevronRight, Circle, CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, FileText, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle, Download, Trash2, Send, Sparkles, ChevronDown, Search, Globe, ShoppingCart, Megaphone, Filter, ChevronRight, Circle, XCircle, AlertCircle } from "lucide-react";
 
 const T = {
   navy:"#0A1628", navyLight:"#0F2040", navyMid:"#162B55",
@@ -38,7 +38,6 @@ const sColor=s=>({Active:T.blue,Resolved:T.success,"Legal Review":T.warning,Pend
 const sBg=s=>({Active:T.bluePale,Resolved:T.successPale,"Legal Review":T.warningPale,Pending:T.gray100}[s]||T.gray100);
 const pColor=p=>({Critical:T.danger,High:T.warning,Medium:T.blue,Low:T.gray400}[p]||T.gray400);
 const pBg=p=>({Critical:T.dangerPale,High:T.warningPale,Medium:T.bluePale,Low:T.gray100}[p]||T.gray100);
-const nColor=t=>({success:T.success,warning:T.warning,danger:T.danger,info:T.blue}[t]||T.gray400);
 const nIcon=t=>({success:<CheckCircle size={14} color={T.success}/>,warning:<AlertCircle size={14} color={T.warning}/>,danger:<XCircle size={14} color={T.danger}/>,info:<Circle size={14} color={T.blue}/>}[t]||<Circle size={14}/>);
 
 const INIT_CASES=[
