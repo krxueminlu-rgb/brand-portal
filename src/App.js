@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, FileText, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, Settings2, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Download, Trash2, Send, Sparkles, ChevronDown } from "lucide-react";
+import { LayoutDashboard, FolderOpen, Bell, BarChart2, Shield, ShoppingCart, Instagram, Globe, Search, FileText, ChevronDown, ArrowRight, Upload, Clock, MessageSquare, TrendingUp, FileBarChart, LogOut, Plus, Settings2, SortAsc, SortDesc, X, Pin, AlertTriangle, CheckCircle2, Info, AlertCircle, Download, Trash2, Send, ChevronUp, Sparkles } from "lucide-react";
 
 const T = {
   navy:"#0A1628", navyLight:"#0F2040", navyMid:"#162B55",
@@ -72,24 +72,42 @@ const ALL_FILTER_TYPES_DEF=(brandCases)=>[
   {key:"period",label:"Period",options:PERIODS.map(p=>p.label)},
 ];
 
-function RealproLogo({size=32, showText=true}){
+function RealproLogo({size=32, showText=true, darkText=false}){
   const s=size;
   return(
     <div style={{display:"flex",alignItems:"center",gap:showText?10:0}}>
       <svg width={s} height={s} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="40" height="40" rx="10" fill={T.blue}/>
-        {/* Shield shape */}
-        <path d="M20 7L9 12V21C9 27.6 13.8 33.7 20 35C26.2 33.7 31 27.6 31 21V12L20 7Z" fill="white" fillOpacity="0.15"/>
-        <path d="M20 9L11 13.5V21C11 26.8 14.9 32.2 20 33.5C25.1 32.2 29 26.8 29 21V13.5L20 9Z" fill="white" fillOpacity="0.2"/>
-        {/* R letterform inside shield */}
-        <path d="M16 14H22C23.7 14 25 15.3 25 17C25 18.3 24.2 19.4 23 19.8L25.5 24H23L20.8 20H18V24H16V14ZM18 18H22C22.6 18 23 17.6 23 17C23 16.4 22.6 16 22 16H18V18Z" fill="white"/>
-        {/* Gold accent dot */}
-        <circle cx="30" cy="10" r="5" fill={T.accent}/>
-        <path d="M28.5 10L29.5 11L31.5 9" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <defs>
+          <linearGradient id="bgGrad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stopColor="#1D6EE8"/>
+            <stop offset="100%" stopColor="#0A1628"/>
+          </linearGradient>
+          <linearGradient id="glowR" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#ffffff"/>
+            <stop offset="100%" stopColor="rgba(255,255,255,0.7)"/>
+          </linearGradient>
+          <radialGradient id="orb" cx="75%" cy="25%" r="40%">
+            <stop offset="0%" stopColor="#E8A020" stopOpacity="0.9"/>
+            <stop offset="100%" stopColor="#E8A020" stopOpacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="40" height="40" rx="10" fill="url(#bgGrad)"/>
+        <rect width="40" height="40" rx="10" fill="url(#orb)"/>
+        {/* Subtle grid lines - AI feel */}
+        <line x1="0" y1="20" x2="40" y2="20" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5"/>
+        <line x1="20" y1="0" x2="20" y2="40" stroke="rgba(255,255,255,0.04)" strokeWidth="0.5"/>
+        {/* Outer ring arc */}
+        <circle cx="20" cy="20" r="14" stroke="rgba(255,255,255,0.1)" strokeWidth="0.8" fill="none"/>
+        <path d="M20 6 A14 14 0 0 1 34 20" stroke="rgba(232,160,32,0.6)" strokeWidth="1.2" fill="none" strokeLinecap="round"/>
+        {/* R letterform — bold, geometric */}
+        <path d="M14 11H23C25.2 11 27 12.8 27 15C27 16.6 26 17.9 24.6 18.5L27.5 25H24.5L21.8 19H17V25H14V11ZM17 16.5H22.5C23.3 16.5 24 15.8 24 15C24 14.2 23.3 13.5 22.5 13.5H17V16.5Z" fill="url(#glowR)"/>
+        {/* AI dot accent */}
+        <circle cx="31" cy="9" r="4" fill={T.accent}/>
+        <circle cx="31" cy="9" r="2" fill="white" fillOpacity="0.9"/>
       </svg>
       {showText&&(
-        <div>
-          <span style={{fontSize:s*0.44,fontWeight:800,color:T.white,letterSpacing:-0.8,lineHeight:1}}>Real</span><span style={{fontSize:s*0.44,fontWeight:800,color:T.accent,letterSpacing:-0.8,lineHeight:1}}>pro</span>
+        <div style={{lineHeight:1}}>
+          <span style={{fontSize:s*0.44,fontWeight:800,color:darkText?T.navy:T.white,letterSpacing:-0.8}}>Real</span><span style={{fontSize:s*0.44,fontWeight:800,color:T.accent,letterSpacing:-0.8}}>pro</span>
         </div>
       )}
     </div>
@@ -262,7 +280,7 @@ export default function App(){
         <p style={{fontSize:32,fontWeight:700,color:T.white,lineHeight:1.2,margin:"0 0 16px",letterSpacing:-1}}>Protect what you've built</p>
         <p style={{fontSize:14,color:"rgba(255,255,255,0.55)",lineHeight:1.7,margin:0}}>Monitor, detect and enforce your brand rights across every platform, market and channel — from a single client portal.</p>
         <div style={{marginTop:48,display:"flex",flexDirection:"column",gap:14}}>
-          {[["🛡","IP Enforcement","Takedowns across marketplaces, domains & social"],["📊","Live Analytics","Real-time dashboards and case progress tracking"],["🤖","AI Assistant","Instant answers on your cases and strategy"]].map(([ic,t,d])=>(
+          {[["🛡️","IP Enforcement","Takedowns across marketplaces, domains & social"],["📊","Live Analytics","Real-time dashboards and case progress tracking"],["✨","AI Assistant","Instant answers on your cases and strategy"]].map(([ic,t,d])=>(
             <div key={t} style={{display:"flex",gap:12,alignItems:"flex-start"}}>
               <span style={{fontSize:18,marginTop:2}}>{ic}</span>
               <div><p style={{margin:"0 0 2px",fontSize:13,fontWeight:600,color:T.white}}>{t}</p><p style={{margin:0,fontSize:12,color:"rgba(255,255,255,0.45)"}}>{d}</p></div>
@@ -273,14 +291,13 @@ export default function App(){
       {/* Right panel */}
       <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",background:T.offWhite}}>
         <div style={{width:360,padding:"48px 40px",background:T.white,borderRadius:16,border:`1px solid ${T.gray200}`}}>
-          <RealproLogo size={32} showText={true}/>
-          <p style={{fontSize:24,fontWeight:700,color:T.navy,margin:"0 0 6px",letterSpacing:-0.5}}>Sign in</p>
+          <RealproLogo size={32} showText={true} darkText={true}/>
+          <p style={{fontSize:24,fontWeight:700,color:T.navy,margin:"20px 0 6px",letterSpacing:-0.5}}>Sign in</p>
           <p style={{fontSize:13,color:T.gray400,margin:"0 0 32px"}}>Enter your client access code</p>
           <label style={{fontSize:12,fontWeight:600,color:T.gray700,display:"block",marginBottom:6}}>Access code</label>
           <input value={code} onChange={e=>setCode(e.target.value)} onKeyDown={e=>e.key==="Enter"&&login()} placeholder="••••••••" style={{width:"100%",padding:"12px 14px",borderRadius:8,border:`1.5px solid ${codeErr?T.danger:T.gray200}`,fontSize:15,outline:"none",boxSizing:"border-box",marginBottom:10,letterSpacing:4,fontFamily:"monospace",color:T.navy}}/>
-          {codeErr&&<p style={{color:T.danger,fontSize:12,margin:"0 0 10px"}}>Invalid code · Try: BP2024</p>}
+          {codeErr&&<p style={{color:T.danger,fontSize:12,margin:"0 0 10px"}}>Invalid access code. Please contact your account manager.</p>}
           <button onClick={login} style={{width:"100%",padding:"12px",borderRadius:8,background:T.navy,color:T.white,border:"none",fontSize:14,fontWeight:600,cursor:"pointer",letterSpacing:0.2}}>Continue →</button>
-          <p style={{fontSize:11,color:T.gray300,marginTop:16,textAlign:"center"}}>Demo access code: BP2024</p>
         </div>
       </div>
     </div>
@@ -291,8 +308,8 @@ export default function App(){
     <div style={{minHeight:560,display:"flex",alignItems:"center",justifyContent:"center",background:T.offWhite}}>
       <div style={{width:620,padding:"0 20px"}}>
         <div style={{textAlign:"center",marginBottom:40}}>
-          <RealproLogo size={30} showText={true}/>
-          <p style={{fontSize:26,fontWeight:700,color:T.navy,margin:"0 0 8px",letterSpacing:-0.5}}>Select a brand profile</p>
+          <RealproLogo size={30} showText={true} darkText={true}/>
+          <p style={{fontSize:26,fontWeight:700,color:T.navy,margin:"16px 0 8px",letterSpacing:-0.5}}>Select a brand profile</p>
           <p style={{fontSize:13,color:T.gray400,margin:0}}>Choose which brand to access</p>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:16}}>
